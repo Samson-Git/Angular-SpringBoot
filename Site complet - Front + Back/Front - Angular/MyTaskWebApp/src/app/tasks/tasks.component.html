@@ -1,0 +1,16 @@
+<div class="container">
+  <p></p>
+  <button class="btn btn-danger" *ngIf="mode==1" (click)="onNewTask()">New Task</button>
+  <p></p>
+  <div class="panel panel-primary">
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th><th>Task Name</th>
+    </tr>
+    <tr *ngFor="let t of tasks">
+      <td>{{t.id}}</td>
+      <td>{{t.taskName}}</td>
+    </tr>
+  </table>
+  </div>
+</div>

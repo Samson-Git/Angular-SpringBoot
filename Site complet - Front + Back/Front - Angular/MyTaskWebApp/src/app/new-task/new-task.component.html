@@ -1,0 +1,16 @@
+<div class="row col-md-6">
+  <div class="panel panel-default">
+    <div *ngIf="mode==1" class="panel-heading">You do not have the right to do that</div>
+    <div *ngIf="mode==2" class="panel-heading">New task</div>
+    <div *ngIf="valide==1"class="panel-heading" >Task added</div>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="saveTask(f.value)">
+        <div class="form-group">
+        <label *ngIf="mode==2" class="control-label">Task Name:</label>
+        <input *ngIf="mode==2" class="form-control" type="text" name="taskName" ngModel="" required=""/>
+        </div>
+        <button *ngIf="mode==2" class="btn btn-danger" type="submit" [disabled]="!f.valid">Save</button>
+      </form>
+    </div>
+  </div>
+</div>

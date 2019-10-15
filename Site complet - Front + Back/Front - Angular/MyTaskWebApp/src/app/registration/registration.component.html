@@ -1,0 +1,18 @@
+<div class="row col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">Registration</div>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="saveUser(f.value)">
+        <div class="form-group">
+          <label  class="control-label">Username:</label>
+          <input  class="form-control" type="text" name="username" ngModel="" required=""/>
+          <label  class="control-label">Password:</label>
+          <input  class="form-control" type="password" name="password" ngModel="" required=""/>
+          <label  class="control-label">Confirm password:</label>
+          <input  class="form-control" type="password" name="repassword" ngModel="" required=""/>
+        </div>
+        <button  class="btn btn-danger" type="submit" [disabled]="!f.valid">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
