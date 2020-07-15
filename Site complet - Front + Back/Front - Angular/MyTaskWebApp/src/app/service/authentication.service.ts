@@ -19,18 +19,18 @@ export class AuthenticationService {
 
   saveToken(jwtToken: string) {
     this.jwtToken = jwtToken;
-    localStorage.setItem('token', jwtToken); // on save le token en storage
+    localStorage.setItem('token', jwtToken);
     const jwtHelper = new JwtHelper();
     // tslint:disable-next-line:max-line-length
-    this.roles = jwtHelper.decodeToken(this.jwtToken).roles; // on enrengistre les roles ||(this.jwtToken).sujetarecuperer --> ici section roles
+    this.roles = jwtHelper.decodeToken(this.jwtToken).roles;
   }
 
   loadToken() {
-    this.jwtToken = localStorage.getItem('token'); // on load le token a partir du local storage
+    this.jwtToken = localStorage.getItem('token');
   }
 
   getTasks() {
-    if (this.jwtToken == null) { // Si token null, on le load
+    if (this.jwtToken == null) {
       this.loadToken();
     }
     // tslint:disable-next-line:max-line-length
@@ -39,13 +39,13 @@ export class AuthenticationService {
 
   isAdmin() {
     for (let r of this.roles) {
-      if (r.authority === 'ADMIN') { return true; } // on check si il a le role ADMIN et on retourne true si vrai
+      if (r.authority === 'ADMIN') { return true; }
     }
     return false;
   }
 
   addTask(task) {
-    if (this.jwtToken == null) { // Si token null, on le load
+    if (this.jwtToken == null) {
       this.loadToken();
     }
     return this.http.post(this.host + '/task', task ,  {headers: new HttpHeaders({authorization: this.jwtToken})});
